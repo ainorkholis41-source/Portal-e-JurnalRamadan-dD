@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SD Islam Dian Didaktika · Portal Premium</title>
+  
+  <!-- FONTS & ICONS -->
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== VARIABEL & RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary: #0a4b4b;
+      --accent: #ffb347;
+      --success: #2ecc71;
+      --canva: #ff6b9d;
+      --glass-bg: rgba(10, 75, 75, 0.85);
+      --font: 'Inter', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: linear-gradient(145deg, #0a3a3a, #1a5a5a, #2a7a7a);
+      color: white;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .portal {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ===== GLASS CARD ===== */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,215,100,0.3);
+      border-radius: 40px 20px 40px 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    /* ===== HEADER - LOGO PASTI MUNCUL! ===== */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .logo-frame {
+      width: 100px;
+      height: 100px;
+      background: transparent;
+      border-radius: 35% 65% 45% 55% / 50% 40% 60% 50%;
+      box-shadow: 0 0 0 5px rgba(255,215,100,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 54px;
+      color: #ffd966;
+      text-shadow: 0 0 20px rgba(255,215,100,0.8);
+    }
+
+    .logo-text h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #fffbe6, #ffe9b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ===== FOTO KEPSEK ===== */
+    .kepsek-container {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .foto-kepsek {
+      width: 150px;
+      height: 150px;
+      border: 4px solid #ffd966;
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-size: 75px;
+      background: rgba(255,180,70,0.2);
+    }
+
+    .foto-kepsek img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== GRID KELAS ===== */
+    .kelas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .kelas-card {
+      background: linear-gradient(145deg, #1a6b6b, #0a4b4b);
+      padding: 25px;
+      border-radius: 30px 10px 30px 10px;
+      border-bottom: 6px solid #ffb347;
+    }
+
+    .kelas-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid #ffd96660;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .kelas-header i {
+      font-size: 40px;
+      color: #ffd966;
+    }
+
+    .kelas-header h3 {
+      font-size: 1.8rem;
+      color: #fff5d6;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      text-decoration: none;
+      color: white;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,215,100,0.3);
+    }
+
+    .link-btn i { font-size: 24px; width: 30px; }
+    .link-btn.excel i { color: #2ecc71; }
+    .link-btn.canva i { color: #ff6b9d; }
+
+    .link-content {
+      flex: 1;
+    }
+
+    .link-title {
+      font-weight: 700;
+    }
+
+    .link-sub {
+      font-size: 0.8rem;
+      color: #ffe6aa;
+    }
+
+    /* ===== SETTINGS DOCK ===== */
+    .settings-dock {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+    }
+
+    .settings-btn {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(145deg, #ffb347, #ff9f1a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: #0a1a2f;
+      box-shadow: 0 10px 30px #ffb347;
+      cursor: pointer;
+      border: 2px solid white;
+    }
+
+    .settings-panel {
+      position: fixed;
+      top: 0;
+      right: -600px;
+      width: 550px;
+      height: 100vh;
+      background: rgba(6, 22, 33, 0.98);
+      backdrop-filter: blur(20px);
+      border-left: 3px solid #ffd966;
+      z-index: 10000;
+      padding: 40px;
+      transition: right 0.5s;
+      overflow-y: auto;
+    }
+
+    .settings-panel.active { right: 0; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .logo-text h1 { font-size: 1.6rem; }
+      .logo-frame { width: 80px; height: 80px; font-size: 45px; }
+      .kelas-grid { grid-template-columns: 1fr; }
+      .settings-panel { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- SETTINGS DOCK -->
+  <div class="settings-dock">
+    <div class="settings-btn" onclick="toggleSettings()">
+      <i class="fa-sharp fa-solid fa-sliders"></i>
+    </div>
+  </div>
+
+  <!-- SETTINGS PANEL -->
+  <div id="settingsPanel" class="settings-panel">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ffcd7e; padding-bottom: 20px; margin-bottom: 30px;">
+      <h2 style="color: #ffd966;">⚙️ Admin Panel</h2>
+      <div style="font-size: 40px; color: #ffcd94; cursor: pointer;" onclick="toggleSettings()">✕</div>
+    </div>
+
+    <!-- PASSWORD SCREEN -->
+    <div id="passwordScreen" style="text-align: center; padding: 30px; background: rgba(0,0,0,0.3); border-radius: 30px;">
+      <i class="fa-sharp fa-solid fa-lock-keyhole" style="font-size: 70px; color: #ffd966; margin-bottom: 20px;"></i>
+      <h3 style="color: white; margin-bottom: 25px;">🔐 Akses Administrator</h3>
+      <input type="password" id="passwordInput" style="width: 100%; padding: 16px; background: rgba(10,30,45,0.9); border: 2px solid #2e6d8c; border-radius: 50px; color: white; margin-bottom: 20px;" placeholder="Masukkan Password">
+      <button onclick="verifyPassword()" style="width: 100%; padding: 16px; background: linear-gradient(145deg, #d68b2c, #b06a1b); border: none; border-bottom: 4px solid #ffea9f; color: white; border-radius: 60px; font-weight: 700; cursor: pointer;">
+        <i class="fa-sharp fa-solid fa-key"></i> Buka Dashboard
+      </button>
+      <p style="color: #ffcd94; margin-top: 20px;">Default: <strong>admin123</strong></p>
+    </div>
+
+    <!-- FORM SETTINGS (HIDDEN) -->
+    <div id="settingsForm" style="display: none;">
+      <!-- LOGO SETTINGS -->
+      <div style="background: rgba(0,0,0,0.3); border-radius: 30px; padding: 25px; margin-bottom: 25px;">
+        <h3 style="color: #ffd966; margin-bottom: 20px;">🖼️ Logo Sekolah</h3>
+        <div style="margin-bottom: 20px;">
+          <label style="color: #ffe6aa; display: block; margin-bottom: 8px;">🔵 Logo URL (ImgBB/Drive)</label>
+          <input type="url" id="logoUrl" style="width: 100%; padding: 14px; background: rgba(10,30,45,0.9); border: 2px solid #2e6d8c; border-radius: 50px; color: white;" placeholder="https://i.ibb.co/xxx/logo.png">
+        </div>
+        <div>
+          <label style="color: #ffe6aa; display: block; margin-bottom: 8px;">🟡 Fallback Teks (Emoji)</label>
+          <input type="text" id="logoText" style="width: 100%; padding: 14px; background: rgba(10,30,45,0.9); border: 2px solid #2e6d8c; border-radius: 50px; color: white;" value="🏫">
+        </div>
+      </div>
+
+      <!-- FOTO KEPSEK SETTINGS -->
+      <div style="background: rgba(0,0,0,0.3); border-radius: 30px; padding: 25px; margin-bottom: 25px;">
+        <h3 style="color: #ffd966; margin-bottom: 20px;">👩‍🏫 Foto Kepala Sekolah</h3>
+        <div style="margin-bottom: 20px;">
+          <label style="color: #ffe6aa; display: block; margin-bottom: 8px;">📸 Foto URL</label>
+          <input type="url" id="fotoUrl" style="width: 100%; padding: 14px; background: rgba(10,30,45,0.9); border: 2px solid #2e6d8c; border-radius: 50px; color: white;" placeholder="https://example.com/foto.jpg">
+        </div>
+        <div>
+          <label style="color: #ffe6aa; display: block; margin-bottom: 8px;">😊 Emoji Fallback</label>
+          <input type="text" id="fotoEmoji" style="width: 100%; padding: 14px; background: rgba(10,30,45,0.9); border: 2px solid #2e6d8c; border-radius: 50px; color: white;" value="👩‍🏫">
+        </div>
+      </div>
+
+      <button onclick="applySettings()" style="width: 100%; padding: 18px; background: linear-gradient(145deg, #d68b2c, #b06a1b); border: none; border-bottom: 4px solid #ffea9f; color: white; border-radius: 60px; font-weight: 700; font-size: 1.1rem; cursor: pointer; margin-bottom: 30px;">
+        <i class="fa-sharp fa-solid fa-circle-check"></i> Terapkan Perubahan
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN PORTAL -->
+  <div class="portal">
+    
+    <!-- HEADER - LOGO PASTI MUNCUL! -->
+    <header class="glass header">
+      <div class="logo-area">
+        <div class="logo-frame" id="logoDisplay">
+          🏫
+        </div>
+        <div class="logo-text">
+          <h1 id="judulDisplay">SD Islam Dian Didaktika</h1>
+          <span style="color: #ffeab3;">⭐ Promoting Science, Art and Sport in Islamic Spirit</span>
+        </div>
+      </div>
+      <div style="background: rgba(255,180,70,0.2); padding: 12px 25px; border-radius: 60px; border: 1px solid #ffd966;">
+        <i class="fa-sharp fa-light fa-moon" style="color: #ffd966; margin-right: 10px;"></i>
+        <span style="font-weight: 700; color: #fff5d6;">1446 H Ramadan</span>
+      </div>
+    </header>
+
+    <!-- SAMBUTAN KEPSEK DENGAN FOTO -->
+    <section class="glass">
+      <div class="kepsek-container">
+        <div class="foto-kepsek" id="fotoKepsekDisplay">
+          👩‍🏫
+        </div>
+        <div style="flex: 1;">
+          <h2 style="color: #fff5d6; margin-bottom: 15px;">
+            <i class="fa-sharp fa-light fa-crown"></i> Sambutan Kepala Sekolah
+          </h2>
+          <div style="font-size: 1.2rem; color: #ffe6a3; margin-bottom: 15px;" id="kepsekNamaDisplay">
+            <i class="fa-sharp fa-light fa-id-card"></i> Dra. Hj. Siti Aminah, M.Pd.I
+          </div>
+          <div style="background: rgba(0,0,0,0.25); padding: 25px; border-radius: 30px; border-left: 6px solid #ffd966; color: #f0f9ff;">
+            Assalamu'alaikum warahmatullahi wabarakatuh. Selamat datang di Portal Premium SD Islam Dian Didaktika. Kami hadirkan jembatan digital terintegrasi untuk orang tua, siswa, dan guru. Silakan akses Google Sheet untuk data akademik dan e-Jurnal Ramadan untuk catatan ibadah putra-putri Anda.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO BADGE -->
+    <div style="display: flex; gap: 20px; justify-content: flex-end; margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.3); padding: 12px 25px; border-radius: 50px; border: 1px solid #2ecc7140;">
+        <i class="fa-sharp fa-light fa-file-excel" style="color: #2ecc71; font-size: 24px;"></i>
+        <div>
+          <div style="font-weight: 700; color: white;">Google Sheet</div>
+          <div style="font-size: 0.8rem; color: #ffe6aa;">User akun siswa & ortu</div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.3); padding: 12px 25px; border-radius: 50px; border: 1px solid #ff6b9d40;">
+        <i class="fa-sharp fa-light fa-canva" style="color: #ff6b9d; font-size: 24px;"></i>
+        <div>
+          <div style="font-weight: 700; color: white;">e-Jurnal Ramadan</div>
+          <div style="font-size: 0.8rem; color: #ffe6aa;">Canva</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID KELAS 24 ROMBEL -->
+    <section class="glass">
+      <h2 style="color: #fff5d6; margin-bottom: 25px;">
+        <i class="fa-sharp fa-light fa-layer-group"></i> Akses Kelas 1A - 6D (24 Rombel)
+      </h2>
+      
+      <div class="kelas-grid" id="kelasGrid">
+        <!-- AKAN DIISI JAVASCRIPT -->
+      </div>
+    </section>
+
+    <!-- PANDUAN SISWA & ORANG TUA -->
+    <section class="glass">
+      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+        <i class="fa-sharp fa-light fa-users" style="font-size: 36px; color: #ffd966;"></i>
+        <h3 style="color: #fff5d6; font-size: 1.4rem;">Panduan untuk Siswa & Orang Tua</h3>
+        <span style="background: #2ecc7130; padding: 4px 12px; border-radius: 50px; font-size: 0.8rem; color: #aaffaa; border: 1px solid #2ecc7160;">Tanpa Password</span>
+      </div>
+      <ul style="list-style: none;">
+        <li style="display: flex; align-items: center; gap: 15px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <i class="fa-sharp fa-light fa-1-circle" style="color: #ffd966; width: 30px;"></i>
+          <span>Pilih kelas anak Anda (1A - 6D) di grid bawah</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 15px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <i class="fa-sharp fa-light fa-2-circle" style="color: #ffd966; width: 30px;"></i>
+          <span>Klik <strong style="color: #2ecc71;">Google Sheet</strong> untuk lihat <strong style="color: #ffe6aa;">akun user name</strong></span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 15px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <i class="fa-sharp fa-light fa-3-circle" style="color: #ffd966; width: 30px;"></i>
+          <span>Klik <strong style="color: #ff6b9d;">e-Jurnal Ramadan</strong> untuk isi catatan ibadah</span>
+        </li>
+        <li style="display: flex; align-items: center; gap: 15px; padding: 10px 0;">
+          <i class="fa-sharp fa-light fa-check-circle" style="color: #2ecc71; width: 30px;"></i>
+          <span><strong>Tanpa login</strong> - langsung klik, langsung akses!</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(4,15,25,0.9); border-radius: 50px 20px 50px 20px; padding: 40px; border: 2px solid #ffd96680; margin-top: 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
+        <div style="display: flex; gap: 20px; align-items: center;">
+          <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; font-size: 48px; background: rgba(255,255,255,0.1); border-radius: 20px; border: 2px solid #ffd966;" id="footerLogoDisplay">
+            🏫
+          </div>
+          <div>
+            <h3 style="color: white; font-size: 1.4rem;">SD Islam Dian Didaktika</h3>
+            <span style="color: #ffe6aa;">Promoting Science, Art and Sport in Islamic Spirit</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 15px;">
+          <a href="#" style="color: white; font-size: 28px; background: #1a6b6b; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 15px; border: 2px solid #ffd966;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" style="color: white; font-size: 28px; background: #1a6b6b; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 15px; border: 2px solid #ffd966;"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" style="color: white; font-size: 28px; background: #1a6b6b; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 15px; border: 2px solid #ffd966;"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ===== DATA 24 ROMBEL =====
+    const KELAS = [];
+    for (let t = 1; t <= 6; t++) {
+      for (let r of ['A', 'B', 'C', 'D']) {
+        KELAS.push(`Kelas ${t}${r}`);
+      }
+    }
+
+    // ===== ADMIN PASSWORD =====
+    let adminPassword = "admin123";
+
+    // ===== RENDER KELAS =====
+    function renderKelas() {
+      const grid = document.getElementById('kelasGrid');
+      let html = '';
+      KELAS.forEach(k => {
+        html += `
+          <div class="kelas-card">
+            <div class="kelas-header">
+              <i class="fa-sharp fa-light fa-users-class"></i>
+              <h3>${k}</h3>
+            </div>
+            <div class="kelas-links">
+              <a href="#" class="link-btn excel" target="_blank">
+                <i class="fa-sharp fa-light fa-file-excel"></i>
+                <div class="link-content">
+                  <span class="link-title">Google Sheet</span>
+                  <span class="link-sub">User akun siswa & ortu</span>
+                </div>
+              </a>
+              <a href="#" class="link-btn canva" target="_blank">
+                <i class="fa-sharp fa-light fa-canva"></i>
+                <div class="link-content">
+                  <span class="link-title">e-Jurnal Ramadan</span>
+                  <span class="link-sub">Canva</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+    }
+
+    // ===== UPDATE LOGO =====
+    function updateLogo(url, text) {
+      const logo = document.getElementById('logoDisplay');
+      const footerLogo = document.getElementById('footerLogoDisplay');
+      
+      if (url && url.trim()) {
+        logo.innerHTML = `<img src="${url}" style="width:100%; height:100%; object-fit:contain;">`;
+        footerLogo.innerHTML = `<img src="${url}" style="width:100%; height:100%; object-fit:contain;">`;
+      } else {
+        logo.innerHTML = text || '🏫';
+        footerLogo.innerHTML = text || '🏫';
+      }
+    }
+
+    // ===== UPDATE FOTO KEPSEK =====
+    function updateFotoKepsek(url, emoji) {
+      const foto = document.getElementById('fotoKepsekDisplay');
+      if (url && url.trim()) {
+        foto.innerHTML = `<img src="${url}" alt="Kepsek" onerror="this.parentElement.innerHTML='${emoji}'">`;
+      } else {
+        foto.innerHTML = emoji || '👩‍🏫';
+      }
+    }
+
+    // ===== APPLY SETTINGS =====
+    window.applySettings = function() {
+      const logoUrl = document.getElementById('logoUrl').value;
+      const logoText = document.getElementById('logoText').value;
+      const fotoUrl = document.getElementById('fotoUrl').value;
+      const fotoEmoji = document.getElementById('fotoEmoji').value;
+      
+      updateLogo(logoUrl, logoText);
+      updateFotoKepsek(fotoUrl, fotoEmoji);
+      
+      alert('✅ Perubahan berhasil diterapkan!');
+      toggleSettings();
+    };
+
+    // ===== VERIFY PASSWORD =====
+    window.verifyPassword = function() {
+      const pwd = document.getElementById('passwordInput').value;
+      if (pwd === adminPassword) {
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('settingsForm').style.display = 'block';
+      } else {
+        alert('❌ Password salah!');
+      }
+    };
+
+    // ===== TOGGLE SETTINGS =====
+    window.toggleSettings = function() {
+      document.getElementById('settingsPanel').classList.toggle('active');
+    };
+
+    // ===== INIT =====
+    window.onload = function() {
+      renderKelas();
+      
+      // SET DEFAULT LOGO - PASTI MUNCUL!
+      const logo = document.getElementById('logoDisplay');
+      if (logo) logo.innerHTML = '🏫';
+      
+      const footerLogo = document.getElementById('footerLogoDisplay');
+      if (footerLogo) footerLogo.innerHTML = '🏫';
+      
+      console.log('✅ Portal siap! Logo aktif: 🏫');
+    };
+  </script>
+</body>
+</html>
